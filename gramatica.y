@@ -2,13 +2,17 @@
 #include <iostream>
 
 using namespace std;
+
+extern int line;
+int yyerror(const char* msj);
+int yylex(void);
 %}
 
 %error-verbose
 
-%TOKEN NOOT NEET NUTE NIT
+%token NOOT NEET NUTE NIT
 
-%start entrada
+%start entrada1
 
 %%
 
@@ -39,6 +43,8 @@ nute    :   NUTE
 nit     :   NIT
         |   NOOT
         ;
+
+%%
 
 int main()
 {
