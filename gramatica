@@ -1,0 +1,34 @@
+entrada -> NIT NIT entrada NUTE NIT entrada
+        -> op entrada
+        -> epsilon
+
+op      -> NOOT noot
+        -> NEET neet
+
+noot    -> NEET
+        -> NUTE
+        -> NIT
+
+neet    -> NUTE
+        -> NIT
+        -> NOOT
+
+
+Pr(entrada) = {NIT, NOOT, NEET}
+Pr(op) = {NOOT, NEET}
+Pr(noot) = {NEET, NUTE, NIT}
+Pr(neet) = {NUTE, NIT, NOOT}
+
+Sig(entrada) = {NUTE, $}
+Sig(op) = {NIT, NOOT, NEET}
+Sig(noot) = {NIT, NOOT, NEET}
+Sig(neet) = {NIT, NOOT, NEET}
+
+                        NIT                                  NOOT                 NEET                   NUTE
+entrada   entrada -> NIT NIT op entrada NUTE NIT   entrada -> op entrada  entrada -> op entrada    entrada->epsilon
+
+op                                                      op -> NOOT noot       op-> NEET neet
+
+noot               noot -> NIT                                                 noot -> NEET        noot -> NUTE
+
+neet               neet -> NIT                          neet -> NOOT                               neet -> NUTE

@@ -1,26 +1,26 @@
 CXX=g++
 CXXFLAGS=-ll
-OBJECTS=gramatica.tab.o lex.yy.o
+OBJS = parser.o lex.yy.o nodo.o
+CABS = nodo.hpp lexico.h
 
-all:	main
+pinglang: $(OBJS)
+	g++ -o pinglang $(OBJS) -ll
 
-main:	$(OBJECTS)
-	$(CXX) -o main $(OBJECTS) $(CXXFLAGS)
-
-gramatica.tab.o:	gramatica.tab.c
-	$(CXX) -c -std=c++11 gramatica.tab.c
-
-lex.yy.o:	lex.yy.c
-	$(CXX) -c lex.yy.c
-
-lex.yy.c:	lexico.l
+lex.yy.c: lexico.l
 	flex lexico.l
 
-gramatica.tab.c:	gramatica.y
-	bison -d gramatica.y
+lex.yy.o: $(CABS) lex.yy.c
+	$(CXX) -c -std=c++11 lex.yy.c
+parser.o: $(CABS) parser.cpp
+	$(CXX) -c -std=c++11 parser.cpp
 
-check:	main
-	cat test | ./main
+nodo.o: $(CABS)
+	$(CXX) -c -std=c++11 nodo.cpp
+
+check:	pinglang
+	./pinglang test.ping && ./test
 
 clean:
-	rm -f *.o *~ gramatica.tab.c gramatica.tab.h lex.yy.c main
+	rm -f lex.yy.c *~ *.o pinglang
+
+.PHONY: clean check
