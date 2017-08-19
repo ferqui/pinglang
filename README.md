@@ -2,6 +2,7 @@
 Esoteric programming language based on brainfuck and Pingu language
 
 El lenguaje está compuesto por 8 instrucciones:
+    
     * NOOT NEET: Incrementa el puntero.
     * NOOT NUTE: Decrementa el puntero.
     * NOOT NIT: Incrementa el byte apuntado.
@@ -12,6 +13,7 @@ El lenguaje está compuesto por 8 instrucciones:
     * NUTE NIT: Si el byte apuntado no es 0, retrocede a la instrucción inmediatamente posterior al anterior NIT NIT.
 
 Ejemplo Hola:
+
 NOOT NIT NOOT NIT NOOT NIT NOOT NIT NOOT NIT
 NOOT NIT NOOT NIT NOOT NIT NOOT NIT NOOT NIT
 
